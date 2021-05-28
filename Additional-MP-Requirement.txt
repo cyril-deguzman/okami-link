@@ -1,0 +1,26 @@
+Deployed Link: http://okamii-link.herokuapp.com/
+
+OKAMILINK
+- Chan, De Guzman, Lemsic [S13]
+
+Features successfully added:
+- Register
+- Log in
+- Log out
+- View account details
+- Edit account details
+- View own profile
+- Post
+- View a Post
+- Comment
+- View a comment
+
+Missing Features to be added soon:
+- Delete account
+- Edit a post
+- Delete a post
+- Edit a comment
+- Delete a comment
+- Search a game
+- Upvote
+- Downvote
