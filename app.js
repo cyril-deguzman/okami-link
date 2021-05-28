@@ -35,6 +35,5 @@ app.use(session({
 app.use(`/`, routes);
 
 app.listen(port, hostname, function () {
-    console.log(`Server is running at:`);
-    console.log(`http://` + hostname + `:` + port);
+	
 });
