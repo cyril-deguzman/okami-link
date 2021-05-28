@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <title>My Den</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/profile.css">
+        <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/profile.js"></script>
+    </head>
+    <body>
+        {{!-- Navbar --}}
+        {{> navbar pAtt="active"}}
+
+        {{!-- Body Container --}}
+        <div class="container">
+        <div class="page-inner no-page-title">
+            <div id="main-wrapper">
+                <div class="row">
+                    
+                    {{!-- Profile --}}
+                    <div class="col-lg-5 col-xl-3">
+                        <div class="card card-white grid-margin">
+                            <div class="card-heading clearfix">
+                                <h4 class="card-title">My Den</h4>
+                            </div>
+                            <div class="card-body user-profile-card mb-3">
+                                <img src="/images/Lobo.png" class="user-profile-image rounded-circle" alt="" />
+                                <h4 class="text-center h6 mt-2">{{name.first}} {{name.last}}</h4>
+                                <p class="text-center small">{{bio}}</p>
+                                <button id="bio-edit" class="btn btn-theme btn-sm">Edit Bio</button>
+                            </div>
+                            <div id="bio-form-container">
+                                <form id="bio-form" method="GET">
+                                    <input type="text" id="bio-input" name="bio" class="float-left profile-edit" placeholder="{{bio}}"></input>
+                                    <input type="submit" id="bio-submit" class="btn btn-outline-primary save-btn" value="save"></input>
+                                </form>
+                            </div>
+                            <hr />
+                            <div class="card-heading clearfix mt-3">
+                                <h4 class="card-title">About</h4>
+                                <button id="about-edit" class="btn btn-theme btn-sm">Edit</button>
+                            </div>
+                            <div class="card-body mb-3">
+                                <p class="mb-0">
+                                    {{about}}
+                                </p>
+                            </div>
+                            <div id="about-form-container">
+                                <form id="about-form" method="GET">
+                                    <input type="text" id="about-input" name="about" class="float-left profile-edit" placeholder="{{about}}"></input>
+                                    <input type="submit" id="about-submit" class="btn btn-outline-primary save-btn" value="save"></input>
+                                </form>
+                            </div>
+                            <hr />
+                            <div class="card-heading clearfix mt-3">
+                                <h4 class="card-title">Games</h4>
+                                <button id="games-edit" class="btn btn-theme btn-sm">Edit</button>
+                            </div>
+                            <div class="card-body mb-3">
+                                {{!-- Load Games --}}
+                                {{#each game}}
+                                    <a href="#" class="label label-success mb-2">{{this}}</a>
+                                {{/each}}
+                            </div>
+                            {{!-- TODO: game form--}}
+                            <div id="game-form-container">
+                                <form id="game-form" method="GET">
+                                    <input type="text" id="game-input" name="games" class="float-left profile-edit" placeholder="space"></input>
+                                    <input type="submit" id="game-submit" class="btn btn-outline-primary save-btn" value="save"></input>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{!-- Timeline --}}
+                    <div class="col-lg-7 col-xl-6">
+
+                        {{!-- Howl Button --}}
+                        <div class="card card-white grid-margin">
+                            <div class="card-body">
+                                <div class="post">
+                                    <form id="howl-form" method="GET">
+                                        <textarea id="post-howl" form="howl-form" class="form-control" placeholder="Howl" rows="4"></textarea>
+                                        <div class="post-options">
+                                            <input type="submit" id="submit-howl" class="btn btn-outline-primary float-right" value="Howl"></input>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{!-- Howls --}}
+                        <div class="profile-timeline">
+                            <ul class="list-unstyled timeline_list">
+                                {{!-- Load Howls and Echos --}}
+                                {{#each howls}}
+                                    {{@index}}: {{> howl }}
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+
+                    {{!-- Okami Friend Suggestions --}}
+                    <div class="col-lg-12 col-xl-3">
+                        <div class="card card-white grid-margin">
+                            <div class="card-heading clearfix">
+                                <h4 class="card-title">Okami Suggestions</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="team">
+                                    {{!-- Load Okami Suggestions --}}
+                                    <p>We need our help! We want to hear your thoughts about the website. Tell us what you think!<br>
+                                        <a href="http://bit.ly/OkamiSuggestions" target="_blank">Click Me To Go To The Forms!</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <title>My Timeline</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/profile.css">
+        <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/home.js"></script>
+    </head>
+    <body>
+        {{!-- Navbar --}}
+        {{> navbar hAtt="active"}}
+
+        {{!-- Body Container --}}
+        <div class="container">
+        <div class="page-inner no-page-title">
+            <div id="main-wrapper">
+                <div class="row">
+                    
+                    {{!-- Profile --}}
+                    <div class="col-lg-5 col-xl-3">
+                        <div class="card card-white grid-margin">
+                            <div class="card-heading clearfix">
+                                <h4 class="card-title">Timeline</h4>
+                            </div>
+                            <div class="card-body user-profile-card mb-3">
+                                <img src="/images/Lobo.png" class="user-profile-image rounded-circle" alt="" />
+                                <h4 class="text-center h6 mt-2">{{name.first}} {{name.last}}</h4>
+                                <p class="text-center small">{{bio}}</p>
+                            </div>
+                            <hr />
+                            <div class="card-heading clearfix mt-3">
+                                <h4 class="card-title">About</h4>
+                            </div>
+                            <div class="card-body mb-3">
+                                <p class="mb-0">
+                                    {{about}}
+                                </p>
+                            </div>
+                            <hr />
+                            <div class="card-heading clearfix mt-3">
+                                <h4 class="card-title">Games</h4>
+                            </div>
+                            <div class="card-body mb-3">
+                                {{#each game}}
+                                    <a href="#" class="label label-success mb-2">{{this}}</a>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+
+                    {{!-- Timeline --}}
+                    <div class="col-lg-7 col-xl-6">
+
+                        {{!-- Howl Button --}}
+                        <div class="card card-white grid-margin">
+                            <div class="card-body">
+                                <div class="post">
+                                    <form id="howl-form" method="GET">
+                                        <textarea id="post-howl" form="howl-form" class="form-control" placeholder="Howl" rows="4"></textarea>
+                                        <div class="post-options">
+                                            <input type="submit" id="submit-howl" class="btn btn-outline-primary float-right" value="Howl"></input>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{!-- Howls --}}
+                        <div class="profile-timeline">
+                            <ul class="list-unstyled timeline_list">
+                                {{!-- Load Howls and Echos --}}
+                                {{#each howls}}
+                                    {{@index}}: {{> howl }}
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+
+                    {{!-- Okami Friend Suggestions --}}
+                    <div class="col-lg-12 col-xl-3">
+                        <div class="card card-white grid-margin">
+                            <div class="card-heading clearfix">
+                                <h4 class="card-title">Resounding Howls</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="team">
+                                    <p>
+                                        #OkamiLink<br>
+                                        #DCAT2021Results<br>
+                                        #FreePrimogems<br>
+                                        #FreeToMingle<br>
+                                        #Bitcoin2021<br>
+                                        #VALORANT<br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        </div>
+        
+    </body>
+</html>
