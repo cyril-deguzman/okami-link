@@ -11,6 +11,13 @@
     scroll-behavior: smooth;
 }
 
+#cyrilx {
+    display: flex;
+    position: absolute;
+    width: 8%;
+    align-items: right;
+  }
+
 body {
     min-height: 100vh;
     background: linear-gradient(#2b1055, #7597de);

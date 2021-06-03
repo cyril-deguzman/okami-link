@@ -236,3 +236,10 @@ body {
     }
 }
 
+#cyrilx {
+    display: flex;
+    position: absolute;
+    width: 8%;
+    align-items: right;
+  }
+
