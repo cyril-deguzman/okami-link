@@ -229,3 +229,10 @@ body {
 .profile-edit {
     width: 7rem;
 }
+
+@media (min-width: 768px) {
+    .container {
+        max-width: max-content;
+    }
+}
+
