@@ -4,6 +4,8 @@ const {Howl} = require('../models/HowlModel.js');
 const {Profile} = require('../models/OkamiModel.js');
 const {Okami} = require('../models/OkamiModel.js');
 const {render} = require('../routes/routes.js');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const controller = {
 
@@ -220,8 +222,16 @@ const controller = {
                 console.log(err);
             }
             else {
-                sess.okami = result;
-                res.send(result);
+                bcrypt.compare(password, result.password, function(err, stats) {
+                    if(stats){
+                        req.session.okami = result;
+                        result.password = password
+                        res.send(result);
+                    }
+                    else{
+                        res.send(stats);
+                    }
+                });
             }
         });
     },
@@ -233,37 +243,42 @@ const controller = {
      * @param {*} req 
      * @param {*} res 
      */
-    postSignUp: function(req, res) {
+     postSignUp: function(req, res) {
         var firstname = req.body.firstname;
         var lastname = req.body.lastname;
         var email = req.body.email;
         var password = req.body.password;
+
+        bcrypt.genSalt(saltRounds, (err, salt) => {
+            bcrypt.hash(password, salt, (err, hash) => {
+                Okami.countDocuments({}, function(err, count) {
+                    var str = "" + count;
+                    var pad = "00000000";
+                    var okamid = pad.substring(0, pad.length - str.length) + str;
         
-        Okami.countDocuments({}, function(err, count) {
-            var str = "" + count;
-            var pad = "00000000";
-            var okamid = pad.substring(0, pad.length - str.length) + str;
-
-            var profile = new Profile({
-                about: '',
-                bio: 'has not set',
-                followers: 0
+                    var profile = new Profile({
+                        about: '',
+                        bio: 'has not set',
+                        followers: 0
+                    });
+        
+                    var okami = new Okami({
+                        okamid: okamid,
+                        fullname: firstname + ' ' + lastname,
+                        name: {
+                            first: firstname,
+                            last: lastname
+                        },
+                        email: email,
+                        password: hash,
+                        profile: profile
+                    });
+        
+                    okami.save();
+                    res.send(okami);
+                })
             });
-
-            var okami = new Okami({
-                okamid: okamid,
-                name: {
-                    first: firstname,
-                    last: lastname
-                },
-                email: email,
-                password: password,
-                profile: profile
-            });
-
-            okami.save();
-            res.send(okami);
-        })
+        });
         
     },
 }
