@@ -217,7 +217,7 @@ const controller = {
         var email = req.body.email;
         var password =  req.body.password;
 
-        Okami.findOne({email: email, password: password}, (err, result)=> {
+        Okami.findOne({email: email}, (err, result)=> {
             if(err) {
                 console.log(err);
             }
