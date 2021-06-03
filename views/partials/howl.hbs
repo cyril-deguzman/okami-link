@@ -7,14 +7,10 @@
                 <small>posted on {{time}}</small>
             </div>
             <div class="timeline-item-post">
+                
                 <p>
                     {{text}}
                 </p>
-                <div class="timeline-options">
-                    <a href="#"><i class="fa fa-thumbs-up"></i> Like </a>
-                    <a href="#"><i class="fa fa-comment"></i> Comment </a>
-                </div>
-
                 <div class="echos">
                     {{#each comments}}
                         {{> echo }}
