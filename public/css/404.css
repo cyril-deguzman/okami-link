@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+
+body {
+    background: linear-gradient(#2b1055, #7597de);
+    height: 100%;
+}
+
+h1 {
+    font-family: 'Dela Gothic One', cursive;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+
+a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#logo {
+    width: 30%;
+}
