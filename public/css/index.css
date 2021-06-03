@@ -14,9 +14,10 @@
 #cyrilx {
     display: flex;
     position: absolute;
+    padding-left: 30px;
     width: 8%;
     align-items: right;
-  }
+}
 
 body {
     min-height: 100vh;
